@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Write Off Guy — Coming Soon</title>
+  <meta name="description" content="Coming soon." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Write Off Guy" />
+  <meta property="og:description" content="Coming soon." />
+  <meta property="og:url" content="https://writeoffguy.com" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧾</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:  #080808;
+      --white:  #F4EFE6;
+      --lime:   #BFFF00;
+      --muted:  rgba(244,239,230,0.35);
+      --border: rgba(244,239,230,0.10);
+      --mono:   'IBM Plex Mono', monospace;
+      --display:'Bebas Neue', sans-serif;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--mono);
+      min-height: 100dvh;
+      overflow: hidden;
+      cursor: crosshair;
+    }
+
+    /* Horizontal rule texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        180deg,
+        transparent,
+        transparent 27px,
+        rgba(255,255,255,0.025) 27px,
+        rgba(255,255,255,0.025) 28px
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Grain */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: -50%;
+      width: 200%;
+      height: 200%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      opacity: .5;
+      z-index: 0;
+      animation: grain 0.8s steps(3) infinite;
+    }
+
+    @keyframes grain {
+      0%   { transform: translate(0,0); }
+      20%  { transform: translate(-3%,-5%); }
+      40%  { transform: translate(-6%,3%); }
+      60%  { transform: translate(3%,-4%); }
+      80%  { transform: translate(-2%,6%); }
+      100% { transform: translate(4%,-2%); }
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      min-height: 100dvh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: clamp(20px, 4vw, 48px) clamp(20px, 5vw, 60px);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: clamp(28px, 4vw, 48px);
+      border-bottom: 0.5px solid var(--border);
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .wordmark {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--lime);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(32px, 6vh, 64px) 0;
+    }
+
+    .brand {
+      font-family: var(--display);
+      font-size: clamp(80px, 17vw, 220px);
+      line-height: 0.86;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: clamp(28px, 4vw, 48px);
+    }
+
+    .brand .line { display: block; overflow: hidden; }
+
+    .brand .line span {
+      display: block;
+      opacity: 0;
+      transform: translateY(105%);
+      animation: slideUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .brand .line:nth-child(1) span { animation-delay: 0.2s; }
+    .brand .line:nth-child(2) span { animation-delay: 0.34s; }
+    .brand .line:nth-child(3) span { animation-delay: 0.48s; }
+
+    .coming {
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.7s forwards;
+    }
+
+    footer {
+      padding-top: clamp(24px, 4vw, 40px);
+      border-top: 0.5px solid var(--border);
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.9s forwards;
+    }
+
+    .footer-copy {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(244,239,230,0.2);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(105%); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <header>
+      <a class="wordmark" href="/">WriteOffGuy.com</a>
+      <div class="status">
+        <span class="dot"></span>
+        <span>Coming soon</span>
+      </div>
+    </header>
+
+    <main>
+      <h1 class="brand" aria-label="Write Off Guy">
+        <span class="line"><span>Write</span></span>
+        <span class="line"><span>Off</span></span>
+        <span class="line"><span>Guy</span></span>
+      </h1>
+      <p class="coming">Something is coming.</p>
+    </main>
+
+    <footer>
+      <span class="footer-copy">&copy; 2025 Write Off Guy Inc. &middot; All rights reserved</span>
+    </footer>
+
+  </div>
+</body>
+</html>
