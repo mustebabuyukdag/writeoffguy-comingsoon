@@ -36,7 +36,6 @@
       cursor: crosshair;
     }
 
-    /* Scanline texture */
     body::before {
       content: '';
       position: fixed;
@@ -52,7 +51,6 @@
       z-index: 0;
     }
 
-    /* Grain overlay */
     body::after {
       content: '';
       position: fixed;
@@ -84,7 +82,6 @@
       padding: clamp(20px, 4vw, 48px) clamp(20px, 5vw, 60px);
     }
 
-    /* ── Header ── */
     header {
       display: flex;
       justify-content: space-between;
@@ -129,7 +126,6 @@
       50%       { opacity: 0.4; transform: scale(0.7); }
     }
 
-    /* ── Main ── */
     main {
       display: flex;
       flex-direction: column;
@@ -145,7 +141,6 @@
       letter-spacing: -0.01em;
       text-transform: uppercase;
       color: var(--white);
-      margin-bottom: clamp(28px, 4vw, 48px);
     }
 
     .brand .line { display: block; overflow: hidden; }
@@ -161,141 +156,11 @@
     .brand .line:nth-child(2) span { animation-delay: 0.28s; }
     .brand .line:nth-child(3) span { animation-delay: 0.41s; }
 
-    /* ── Tagline ── */
-    .tagline {
-      font-size: clamp(12px, 1.4vw, 15px);
-      font-weight: 300;
-      line-height: 1.75;
-      color: var(--muted);
-      max-width: 480px;
-      margin-bottom: clamp(32px, 5vw, 56px);
-      opacity: 0;
-      animation: fadeUp 0.6s ease 0.6s forwards;
-    }
-
-    .tagline strong {
-      color: var(--lime);
-      font-weight: 400;
-    }
-
-    /* ── Perks row ── */
-    .perks {
-      display: flex;
-      flex-wrap: wrap;
-      gap: clamp(12px, 2vw, 20px) clamp(24px, 4vw, 48px);
-      margin-bottom: clamp(36px, 5vw, 56px);
-      opacity: 0;
-      animation: fadeUp 0.6s ease 0.72s forwards;
-    }
-
-    .perk {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 10px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(244,239,230,0.45);
-    }
-
-    .perk-icon {
-      color: var(--lime);
-      font-style: normal;
-      line-height: 1;
-    }
-
-    /* ── Email form ── */
-    .notify-label {
-      font-size: 10px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(244,239,230,0.28);
-      margin-bottom: 12px;
-      opacity: 0;
-      animation: fadeUp 0.6s ease 0.84s forwards;
-    }
-
-    .form-row {
-      display: flex;
-      gap: 0;
-      max-width: 440px;
-      opacity: 0;
-      animation: fadeUp 0.6s ease 0.9s forwards;
-    }
-
-    .form-row input[type="email"] {
-      flex: 1;
-      background: rgba(244,239,230,0.06);
-      border: 0.5px solid rgba(244,239,230,0.18);
-      border-right: none;
-      color: var(--white);
-      font-family: var(--mono);
-      font-size: 12px;
-      letter-spacing: 0.06em;
-      padding: 13px 16px;
-      outline: none;
-      transition: border-color 0.2s, background 0.2s;
-      cursor: text;
-      min-width: 0;
-    }
-
-    .form-row input[type="email"]::placeholder {
-      color: rgba(244,239,230,0.25);
-    }
-
-    .form-row input[type="email"]:focus {
-      background: rgba(244,239,230,0.09);
-      border-color: rgba(244,239,230,0.4);
-    }
-
-    .form-row button {
-      background: var(--lime);
-      border: 0.5px solid var(--lime);
-      color: var(--black);
-      font-family: var(--mono);
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      padding: 13px 20px;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: background 0.15s, color 0.15s;
-    }
-
-    .form-row button:hover {
-      background: var(--white);
-      border-color: var(--white);
-    }
-
-    .form-row button:active {
-      transform: scale(0.98);
-    }
-
-    /* success state */
-    .form-success {
-      display: none;
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--lime);
-      padding: 14px 0;
-    }
-
-    .form-success.visible { display: block; }
-    .form-row.hidden { display: none; }
-
-    /* ── Footer ── */
     footer {
       padding-top: clamp(24px, 4vw, 40px);
       border-top: 0.5px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
       opacity: 0;
-      animation: fadeUp 0.6s ease 1.05s forwards;
+      animation: fadeUp 0.6s ease 0.85s forwards;
     }
 
     .footer-copy {
@@ -305,23 +170,6 @@
       color: rgba(244,239,230,0.2);
     }
 
-    .footer-links {
-      display: flex;
-      gap: 20px;
-    }
-
-    .footer-links a {
-      font-size: 10px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(244,239,230,0.25);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    .footer-links a:hover { color: var(--lime); }
-
-    /* ── Keyframes ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(12px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -337,13 +185,6 @@
         animation-duration: 0.01ms !important;
         animation-delay: 0.01ms !important;
       }
-    }
-
-    @media (max-width: 500px) {
-      .form-row { flex-direction: column; }
-      .form-row input[type="email"] { border-right: 0.5px solid rgba(244,239,230,0.18); border-bottom: none; }
-      .form-row button { padding: 13px; }
-      .perks { gap: 10px 20px; }
     }
   </style>
 </head>
@@ -365,63 +206,12 @@
         <span class="line"><span>Off</span></span>
         <span class="line"><span>Guy</span></span>
       </h1>
-
-      <p class="tagline">
-        The go-to resource for <strong>business owners &amp; freelancers</strong>
-        who want to stop leaving money on the table — and actually understand
-        their tax write-offs.
-      </p>
-
-      <ul class="perks" aria-label="What's coming">
-        <li class="perk"><i class="perk-icon" aria-hidden="true">&#x2192;</i> Write-off breakdowns</li>
-        <li class="perk"><i class="perk-icon" aria-hidden="true">&#x2192;</i> Deduction guides</li>
-        <li class="perk"><i class="perk-icon" aria-hidden="true">&#x2192;</i> Real-world examples</li>
-        <li class="perk"><i class="perk-icon" aria-hidden="true">&#x2192;</i> Free resources</li>
-      </ul>
-
-      <p class="notify-label">Get notified when we launch</p>
-
-      <form class="form-row" id="waitlistForm" novalidate>
-        <input
-          type="email"
-          id="emailInput"
-          name="email"
-          placeholder="your@email.com"
-          autocomplete="email"
-          required
-          aria-label="Email address"
-        />
-        <button type="submit">Notify me</button>
-      </form>
-      <p class="form-success" id="formSuccess" role="status" aria-live="polite">
-        &#x2713;&nbsp; You're on the list. We'll be in touch.
-      </p>
     </main>
 
     <footer>
       <span class="footer-copy">&copy; 2026 Write Off Guy &middot; All rights reserved</span>
-      <nav class="footer-links" aria-label="Social links">
-        <a href="mailto:hello@writeoffguy.com">Contact</a>
-      </nav>
     </footer>
 
   </div>
-
-  <script>
-    const form = document.getElementById('waitlistForm');
-    const input = document.getElementById('emailInput');
-    const success = document.getElementById('formSuccess');
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (!input.value || !input.validity.valid) {
-        input.focus();
-        return;
-      }
-      // TODO: wire up to your email service (Mailchimp, ConvertKit, etc.)
-      form.classList.add('hidden');
-      success.classList.add('visible');
-    });
-  </script>
 </body>
 </html>
